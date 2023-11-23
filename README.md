@@ -1,66 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tudo sobre Git a seguir
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Conceitos : 
+**"rastreador as alterações feitas em arquivos"**
+    <br> 
+  > "Git não precisa de Github,
+       Github precisa de Git"
+ 
+1. Repositórios remotos: pode Salvar na Github e no Pendrive(Discos);
 
-## About Laravel
+2. Commits: é um identificador único que o torna rastreável,Seu contador de historia do codigo;
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3. Branches: versões alternativas de um projeto que podem ser criadas para testar novos recursos,Evitando erros na branch principal (Master=main=debian) "Literalmente o Subaru";
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+4. Merging: Combinar branches diferentes em uma única branch(master), chamada de merge;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+5. Pull Requests:Chama o Produtudo final das junção das Branches no Repositório remoto;
 
-## Learning Laravel
+6. features: Ferramentas novas no seu Projeto;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+7. Fork: Comunismo , agora Seu codigo é meu junto com todos os commits,upstream é o master de um fork ;
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Arquivos Especiais:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<pre>
+README.md Esse arquivo é usado pra descrever seu projeto para o Mundo
 
-## Laravel Sponsors
+cria link [Oque voce quer falar](link).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Cabeçalho 1.
+## Cabeçalho 2.
 
-### Premium Partners
+*Texto em itálico*.
+**Texto em negrito**.
+~~Texto riscado~~.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Item de lista não ordenada 1.
+- Item de lista não ordenada 2.
 
-## Contributing
+1. Item de lista ordenada 1.
+2. Item de lista ordenada 2.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> Isso é uma citação em bloco,no meio do site.
 
-## Code of Conduct
+![ o texto que será exibido caso a imagem não possa ser carregada](link da imagem).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+alem de todas as tags do html sem css.
+</pre>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+.gitignore Esse é Arquivos no qual você escolhe os arquivos que não deseja upar .
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+plaintext -> arquivo no diretorio raiz
+*.txt -> define a extenção que vc não quer da push
+/node_modules -> diretorios
+
+## Comandos:
+- git init - Inicia o Git na sua maquina;
+- git add - Adiciona os Arquivos ( . = all ) Para o trabalho;
+- git status - mostra quais arquivos foram modificados e podem ser commitados;
+- git log - Lista seus commits( nome,codigo,autor,data )- "q" Fecha;
+- git clone (url) - clona um Repositórios remoto;
+- git commit -a[adciona aquivos] -m[mensagem] "sua desc" - conta a historia do seu codigo ;
+- git push -u origin main - empurra pro Repositório Remoto;
+
+- git branch - Ls nas suas braches 
+- git branch [qulquer nome]-Cria uma branch nova
+- git branch -D [nome] - apaga a branch;
+- git checkout -b nome_da_branch - cria uma nova branch e muda para ela imediatamente;
+
+- git checkout [nome branch] - Entra na branch digitada;
+- git checkout nome_do_arquivo - Isso descarta as alterações não salvas no arquivo especificado;
+
+- git merge [branch] - funde a sua branch no rota principal ( precisa estar na principal )
+
+- git pull - Faz o Pull Request ;
+
+- git remote add upstream <name> <url> - sincroniza a branch principal;
+- git remote add origin git@github.com:MiguelSanzBr/repositorio
+
+ - git fetch - é usado para buscar as alterações de um repositório remoto para o repositório local;
+ 
+- git reset --soft HEAD~1 - desfaz o seu ultimo commit , porem os arquivos não mudam;
+
+- git reset --hard HEAD~1 - tbm apaga seu ultimo commit , Voltando no tempo;
+ 

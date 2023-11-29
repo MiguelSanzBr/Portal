@@ -28,7 +28,6 @@
  <br><br>
     <button type="submit" class="styled-input">Enviar</button>
 </form>
-<img src="{{ url('') }}" 
-<img data-src= "{{Storage::get('storage/emulated/0/Download/dev/portal/storage/IMG/1700600494.jpg') }}"
+<img src="/data/data/com.termux/files/home/Portal/storage/IMG/1701214552.jpg">
 </body>
 </html>

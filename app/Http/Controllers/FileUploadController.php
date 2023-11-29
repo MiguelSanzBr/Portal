@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\video;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
+use Livewire\WithFileUploads;
 
 class FileUploadController extends Controller
 {
+use WithFileUploads;
+public $photo; 
     public function fileUp()
     {
       return view('file');
@@ -50,8 +53,5 @@ $request->validate([
          "user_id" => $user
         ]);
         */
-       
-   dd($save);
-      
     }
 }

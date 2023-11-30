@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\UploadPhoto;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +35,8 @@ Route::middleware('auth')->group(function () {
  Route::post('/load','load')->name('load.post');
 });
 
+
+Route::get('/files', [App\Livewire\UploadPhoto::class,'render']);
+Route::post('/save', [App\Livewire\UploadPhoto::class,'save']);
 
 require __DIR__.'/auth.php';

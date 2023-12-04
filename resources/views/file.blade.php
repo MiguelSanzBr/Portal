@@ -28,6 +28,11 @@
  <br><br>
     <button type="submit" class="styled-input">Enviar</button>
 </form>
-<img src="/data/data/com.termux/files/home/Portal/storage/IMG/1701214552.jpg">
+<!--
+<video controls>
+    <source src="{{url('/Portal/storage/VIDEO/1701725766.mp4') }}" type="video/mp4">
+    
+</video>
+-->
 </body>
 </html>

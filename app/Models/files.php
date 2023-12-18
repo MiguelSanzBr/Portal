@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class video extends Model
+class files extends Model
 {
     use HasFactory;
     protected $fillable = [
         'title',
         'describe',
-        'image_path',
+        'files_path',
+        'files_name',
         'user_id'
     ];
     public function user()

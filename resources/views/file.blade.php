@@ -16,6 +16,11 @@
 </style>
 </head>
 <body>
+  @php
+  
+ // dump($video->files_name);
+  
+  @endphp
  <form action="{{ route('load.post') }}" method="POST" enctype="multipart/form-data">
    @csrf
    <label for="title">Título:</label><br>
@@ -28,11 +33,14 @@
  <br><br>
     <button type="submit" class="styled-input">Enviar</button>
 </form>
-<!--
-<video controls>
-    <source src="{{url('/Portal/storage/VIDEO/1701725766.mp4') }}" type="video/mp4">
+
+@if (empty($files->files_name))
     
-</video>
--->
+@else
+    <img src="{{asset('storage/IMG/'.$files->files_name)}}" >
+    <video controls>
+        <source src="{{asset('storage/VIDEO/'.$files->files_name) }}" type="video/mp4">
+    </video>
+@endif
 </body>
 </html>

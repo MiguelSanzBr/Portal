@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\video;
+use App\Models\files;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
 use Livewire\WithFileUploads;
+use Response;
 
 class FileUploadController extends Controller
 {
   use WithFileUploads;
-  public $path; 
   public $name;
   
     public function fileUp()
     {
-      return view('file',['name' => $this->name,'path' => $this->path]);
+      $files=files::all()->last();
+      return view('file',['files' => $files]);
     }
     public function load(Request $request)
     {
@@ -53,18 +54,26 @@ $request->validate([
           echo "a Extenção do seu arquivo é invalida";
         }
        $path = storage_path($save);    
-       $this->path = $path;  
-       $this->name = $imageName;
        
-       /* 
-        $video = video::Create([
+      
+         $exists = Storage::disk('local')->exists('IMG/'.$fileName);
+         $exists = Storage::disk('local')->exists('VIDEO/'.$fileName);
+    
+       
+       $this->name = $fileName;
+
+       
+        $files = files::Create([
          "title" => $request->title,
          "describe" => $request->describe,
-         "image_path" => $this->path,
+         "files_path" => $path,
+         "files_name" => $fileName,
          "user_id" => $user
         ]);
-        */
-        return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp']);
+      
+        
+    // return view('file',['name' => $fileName]);
+      return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp']);
         
     }
 }

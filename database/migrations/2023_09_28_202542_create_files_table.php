@@ -8,11 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('describe');
-            $table->text('image_path');
+            $table->string('files_path');
+            $table->text('files_name');
            $table->unsignedBigInteger('user_id');
            $table->foreign('user_id')->references('id')->on('users');
            $table->timestamps();
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('files');
     }
 };

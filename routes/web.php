@@ -42,6 +42,7 @@ Route::controller(FileUploadController::class)->group(function () {
     ->name("fileUp.get")
     ->middleware("auth");
   Route::post("/load", "load")->name("load.post");
+  
 });
 
 Route::get("/files", [App\Livewire\UploadPhoto::class, "render"]);

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\files;
+use App\Models\images;
+use App\Models\videos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
-use Livewire\WithFileUploads;
-use Response;
 
 class FileUploadController extends Controller
 {
-  use WithFileUploads;
-  public $name;
   
     public function fileUp()
     {
-      $files=files::all()->last();
-      return view('file',['files' => $files]);
+      $image=images::all()->last();
+      $videos=videos::all()->last();
+      return view('file',['image' => $image,'video'=>$videos]);
     }
     public function load(Request $request)
     {
@@ -45,35 +43,36 @@ $request->validate([
       $extension == "svg" )
       {
         $save = $request->image_path->storeAs('/IMG',$fileName);
-        }else if($extension == "mp4" ||          $extension == "mov" ||
-        $extension == "avi" || 
-        $extension == "mkv") 
-        {
-         $save = $request->image_path->storeAs('/VIDEO',$fileName);
-        }else {
-          echo "a Extenção do seu arquivo é invalida";
-        }
-       $path = storage_path($save);    
-       
-      
-         $exists = Storage::disk('local')->exists('IMG/'.$fileName);
-         $exists = Storage::disk('local')->exists('VIDEO/'.$fileName);
-    
-       
-       $this->name = $fileName;
-
-       
-        $files = files::Create([
+        $path = storage_path($save);   
+        $exists = Storage::disk('local')->exists('IMG/'.$fileName);
+        images::Create([
          "title" => $request->title,
          "describe" => $request->describe,
          "files_path" => $path,
          "files_name" => $fileName,
          "user_id" => $user
         ]);
-      
+        }else if($extension == "mp4" ||          $extension == "mov" ||
+        $extension == "avi" || 
+        $extension == "mkv") 
+        {
+         $save = $request->image_path->storeAs('/VIDEO',$fileName);
+        $path = storage_path($save);   
+         $exists = Storage::disk('local')->exists('VIDEO/'.$fileName);
+         videos::Create([
+         "title" => $request->title,
+         "describe" => $request->describe,
+         "files_path" => $path,
+         "files_name" => $fileName,
+         "user_id" => $user
+        ]);
+        }else {
+          return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('mensagem', 'a Extenção do seu arquivo é invalida');
+        }
         
     // return view('file',['name' => $fileName]);
-      return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp']);
+      return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('messagem', 'Arquivo enviado com sucesso');
         
     }
+    
 }

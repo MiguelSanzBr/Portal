@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\PainelController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\UploadPhoto;
 /*
@@ -43,6 +44,19 @@ Route::controller(FileUploadController::class)->group(function () {
     ->middleware("auth");
   Route::post("/load", "load")->name("load.post");
   
+});
+
+Route::controller(PainelController::class)->group(function () {
+  route::get("/painelimg", "painelImage")
+    ->name("painelimg.get")
+    ->middleware("auth");
+
+ route::post("/painelImageEdit", "painelImageEdit")->name("painelEdit.post");
+  route::post("/painelImageDelete", "painelImageDelete")->name("painelImageDelete.post");
+    
+  route::get("/painelvd", "painelVideo")
+    ->name("painelvideo.get")
+    ->middleware("auth");
 });
 
 Route::get("/files", [App\Livewire\UploadPhoto::class, "render"]);

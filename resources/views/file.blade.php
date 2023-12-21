@@ -21,6 +21,13 @@
  // dump($video->files_name);
   
   @endphp
+
+  @if(session('mensagem'))
+    <div class="alert alert-success">
+        <p>{{ session('mensagem') }}</p>
+    </div> 
+@endif
+
  <form action="{{ route('load.post') }}" method="POST" enctype="multipart/form-data">
    @csrf
    <label for="title">Título:</label><br>
@@ -34,13 +41,18 @@
     <button type="submit" class="styled-input">Enviar</button>
 </form>
 
-@if (empty($files->files_name))
+@if (empty($video->files_name) )
     
 @else
-    <img src="{{asset('storage/IMG/'.$files->files_name)}}" >
+  
     <video controls>
-        <source src="{{asset('storage/VIDEO/'.$files->files_name) }}" type="video/mp4">
+        <source src="{{asset('storage/VIDEO/'.$video->files_name) }}" type="video/mp4">
     </video>
+@endif
+@if ( empty($image->files_name) )
+
+@else 
+  <img src="{{asset('storage/IMG/'.$image->files_name)}}" >
 @endif
 </body>
 </html>

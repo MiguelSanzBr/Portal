@@ -23,7 +23,14 @@ $request->validate([
             'title' => 'required|max:255',
             'describe' => 'required|max:700',
             'image_path' => 'mimes:jpeg,png,jpg,gif,svg,mp4,mov,avi,mkv|max:2048'
-        ]);
+        ],[
+    'title.required' => 'O campo título é obrigatório.',
+    'title.max' => 'O campo título deve ter no máximo 255 caracteres.',
+    'describe.required' => 'O campo descrição é obrigatório.',
+    'describe.max' => 'O campo descrição deve ter no máximo 700 caracteres.',
+    'image_path.mimes' => 'O arquivo selecionado não é uma imagem válida ou excede o tamanho máximo de 2048 bytes.',
+    'image_path.max' => 'O arquivo selecionado excede o tamanho máximo de 2048 bytes.'
+]);
       $storage=Storage::disk('local');
       $user = Auth::id();
       $file = $request->file('image_path');
@@ -45,7 +52,7 @@ $request->validate([
         $save = $request->image_path->storeAs('/IMG',$fileName);
         $path = storage_path($save);   
         $exists = Storage::disk('local')->exists('IMG/'.$fileName);
-        images::Create([
+      $images=images::Create([
          "title" => $request->title,
          "describe" => $request->describe,
          "files_path" => $path,
@@ -59,7 +66,7 @@ $request->validate([
          $save = $request->image_path->storeAs('/VIDEO',$fileName);
         $path = storage_path($save);   
          $exists = Storage::disk('local')->exists('VIDEO/'.$fileName);
-         videos::Create([
+       $videos=videos::Create([
          "title" => $request->title,
          "describe" => $request->describe,
          "files_path" => $path,
@@ -67,12 +74,11 @@ $request->validate([
          "user_id" => $user
         ]);
         }else {
-          return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('mensagem', 'a Extenção do seu arquivo é invalida');
+          die();
         }
-        
-    // return view('file',['name' => $fileName]);
-      return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('messagem', 'Arquivo enviado com sucesso');
-        
+     if (isset($images->exists) || 
+     isset($videos->exists)) {
+  return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('mensagems', 'Arquivo enviado com sucesso');
+       }
     }
-    
 }

@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PainelController;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\UploadPhoto;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +15,10 @@ use App\Livewire\UploadPhoto;
 |
 */
 
-Route::get("/", function () {
-  return view("welcome");
-});
+Route::get("/dashboard", [App\Http\Controllers\PainelController::class,"dashboard"])
+  ->name("dashboard");
 
-Route::get("/dashboard", function () {
-  return view("dashboard");
-})
-  ->middleware(["auth", "verified"])
+Route::get("/", [App\Http\Controllers\PainelController::class,"dashboard"])
   ->name("dashboard");
 
 Route::middleware("auth")->group(function () {
@@ -47,19 +42,31 @@ Route::controller(FileUploadController::class)->group(function () {
 });
 
 Route::controller(PainelController::class)->group(function () {
+  route::get("/painel", "painel")
+    ->name("painel.get")->middleware(["auth", "can:editDelete-files"]);
+  
   route::get("/painelimg", "painelImage")
     ->name("painelimg.get")
-    ->middleware("auth");
+   ->middleware(["auth", "can:editDelete-files"]);
 
- route::post("/painelImageEdit", "painelImageEdit")->name("painelEdit.post");
+ route::post("/painelImageEdit", "painelImageEdit")->name("painelImageEdit.post");
   route::post("/painelImageDelete", "painelImageDelete")->name("painelImageDelete.post");
     
   route::get("/painelvd", "painelVideo")
     ->name("painelvideo.get")
-    ->middleware("auth");
+   ->middleware(["auth", "can:editDelete-files"]);
+    
+ route::post("/painelVideoEdit", "painelVideoEdit")->name("painelVideoEdit.post");
+  route::post("/painelVideoDelete", "painelVideoDelete")->name("painelVideoDelete.post");
+  
+  route::get("/painelusr", "painelUser")
+    ->name("paineluser.get")
+   ->middleware(["auth", "can:editDelete-files"]);
+    
+ route::post("/painelUserEdit", "painelUserEdit")->name("painelUserEdit.post");
+ 
+ route::post("/painelUserDelete", "painelUserDelete")->name("painelUserDelete.post");
+  
 });
-
-Route::get("/files", [App\Livewire\UploadPhoto::class, "render"]);
-Route::post("/save", [App\Livewire\UploadPhoto::class, "save"]);
 
 require __DIR__ . "/auth.php";

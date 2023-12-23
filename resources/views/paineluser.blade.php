@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Painel Imagem</title>
+  <title>Painel User</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -18,40 +18,46 @@
         <p>{{ session('mensagem') }}</p>
     </div> 
 @endif
+
   <h1>Painel Admin</h1>
  <div class="container">
  <table class="table table-striped">
     <thead>
        <tr>
             <th>ID</th>
-            <th>Titulo</th>
-            <th>Descrição</th>
-            <th>Imagem</th>
-            <th>Aprovar</th>
-            <th>Deletar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Promover</th>
+            <th>Rebaixar</th>
             
         </tr>
         </thead>
         <tbody>
-            @foreach ($img as $bfn)
-            @if($bfn->adminCheck == 0)
+            @foreach ($user as $bfn)
+            
             <tr>
               <td>{{ $bfn->id }}</td>
-              <td>{{ $bfn->title }}</td>
-            <td>{{ $bfn->describe }}</td>
-              <td> <img src="{{asset('storage/IMG/'.$bfn->files_name)}}" height="40"></td>
-            <td>
-       <form action="{{ route('painelImageEdit.post') }}" method="POST">
+              <td>{{ $bfn->name }}</td>
+            <td>{{ $bfn->email }}</td>
+            @if($bfn->admin == 0)
+            <td>USUARIO</td>
+            @else
+             <td>ADMIN</td> 
+            @endif
+          @if ($bfn->id !== auth()->id())
+           <td>
+       <form action="{{ route('painelUserEdit.post') }}" method="POST">
       @csrf
         <input type="hidden" name="id" value="{{ $bfn->id }}">
-            <button type="submit" class="btn btn-success">Aprovar</button>
+            <button type="submit" class="btn btn-success">Promover</button>
     </form>
 </td>
                <td>    
-               <form action="{{ route('painelImageDelete.post') }}" method="POST">
+               <form action="{{ route('painelUserDelete.post') }}" method="POST">
        @csrf
         <input type="hidden" name="id" value="{{ $bfn->id }}">
-        <button type="submit" class="btn btn-danger">Deletar</button>
+        <button type="submit" class="btn btn-danger">Rebaixar</button>
     </form></td>
           </tr>
             @endif

@@ -1,32 +1,44 @@
-# Portal De Noticias 
+# Portal de Notícias
+## Tema
+**Abuso de autoridade, com foco na polícia defendida pela direita.**
 
-## tema: tendo como foco abuso das autoridades , policia que a direita defende 
+## Estrutura do Banco de Dados
+1. User
+- id
+- icon_perfil
+- nome
+- email
+- password (padrão Laravel)
 
-> Banco de dados:
-User: id,icon-perfil,nome, email, password(padrao laravel)
-Video: id, title,describe,video_file ,Check default= No, user_id
+2. Video
+- id
+- title
+- description
+- video_file
+- check (default = No)
+- user_id
 
-> Telas:
-Login ( create )
- campo de cadastro e login
- mandando : nome ,email, password
- 
-> Deletar (delete)
-  deleta todos os anuncios feito por um user
-  pedindo email e senha 
-  
-> Portal (home)(read)
- Read da tabela Video que estão com check = Yes.
- 
-> Criar anúncio(create)
-  user precisa estar logado
-  o user manda então title,describe,video 
-  
-> controle dos anuncios ( aceita ou não )(update and delete)
-  antes de ir pro portal o video passa aqui 
-  adm pode escolher , editando o Check para Yes ou No
-  
+## Funcionalidades
+1. Login e Cadastro
+Campos para login e cadastro: nome, email e senha.
+2. Deletar Anúncios
+Permite ao usuário deletar todos os anúncios criados, após autenticação por email e senha.
+3. Portal (Home)
+Exibe vídeos com check = Yes.
+4. Criar Anúncio
+Usuário logado pode criar um anúncio, enviando título, descrição e arquivo de vídeo.
+5. Controle dos Anúncios
+Anúncios precisam de aprovação do administrador (alterando check para Yes ou No).
+Algoritmo
+Usuários logados podem criar anúncios, que são aprovados por um administrador antes da publicação.
 
-> Algoritmo:
-Permitir que um usuário logado crie um anúncio
-Para que o anúncio seja enviado para o portal, um administrador precisa aceitá-lo = grupos do facebook
+## Instalação
+- git clone https://github.com/MiguelSanzBr/Portal.git
+- cd Portal
+- cd database && touch database.sqlite && cd ..
+- composer install && npm install && npm run build
+- mv .env.example .env
+- php artisan key:generate
+- php artisan migrate
+- php artisan storage:link
+- php artisan serve

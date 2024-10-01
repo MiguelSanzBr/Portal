@@ -18,30 +18,14 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
           @auth
             @include('layouts.navigation')
-           
-            <!-- Page Heading -->
-            @if (isset($header))
-            
+          @endauth
+            @guest         
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                       {{ $header }}
+                       <a href="{{ route('register') }}">Clique aqui para Criar uma Conta</a>
                   
                     </div>
                 </header>
-                
-            @endif
-            @endauth
-            @guest
-                        @if (isset($header))
-            
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                       <a href="{{ route('register') }}">Clique aqui para logar</a>
-                  
-                    </div>
-                </header>
-                
-            @endif
             @endguest
             <!-- Page Content -->
             <main>

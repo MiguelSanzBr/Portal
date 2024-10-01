@@ -78,7 +78,7 @@ $request->validate([
         }
      if (isset($images->exists) || 
      isset($videos->exists)) {
-  return redirect()->action([\App\Http\Controllers\FileUploadController::class, 'fileUp'])->with('mensagems', 'Arquivo enviado com sucesso');
+  return redirect()->route('dashboard')->with('mensagems', 'Arquivo enviado com sucesso');
        }
     }
 }

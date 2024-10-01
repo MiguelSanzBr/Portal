@@ -18,6 +18,14 @@
 - check (default = No)
 - user_id
 
+3. Imagem
+- id
+- title
+- description
+- video_file
+- check (default = No)
+- user_id
+
 ## Funcionalidades
 1. Login e Cadastro
 Campos para login e cadastro: nome, email e senha.
@@ -33,12 +41,12 @@ Algoritmo
 Usuários logados podem criar anúncios, que são aprovados por um administrador antes da publicação.
 
 ## Instalação
-- git clone https://github.com/MiguelSanzBr/Portal.git
-- cd Portal
-- cd database && touch database.sqlite && cd ..
-- composer install && npm install && npm run build
-- mv .env.example .env
-- php artisan key:generate
-- php artisan migrate
-- php artisan storage:link
-- php artisan serve
+- git clone https://github.com/MiguelSanzBr/Portal.git;
+- cd Portal;
+- cd database && touch database.sqlite && cd ..;
+- composer install && npm install && npm run build;
+- mv .env.example .env;
+- php artisan key:generate;
+- php artisan migrate;
+- php artisan storage:link;
+- php artisan serve;

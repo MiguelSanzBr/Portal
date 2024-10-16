@@ -9,10 +9,22 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Atlas') }}
-                    </x-nav-link>
-                </div>
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Atlas') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('fileUp.get')" :active="request()->routeIs('fileUp.get')">
+                            {{ __('Envie Sua Mídia') }}
+                        </x-nav-link>
+                    </div>
+                    @if(Auth::user()->admin == 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('painel.get')" :active="request()->routeIs('painel.get')">
+                            {{ __('Painel Admin') }}
+                        </x-nav-link>
+                    </div>
+                    @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">

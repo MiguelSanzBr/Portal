@@ -1,56 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Envie Sua Mídia</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
-      color: #343a40;
-      padding: 50px 0;
-    }
-    .container-fluid {
-      max-width: 600px;
-      margin: auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #007bff;
-    }
-    .styled-input {
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 16px;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    .alert {
-      margin-bottom: 20px;
-    }
-    .btn-submit {
-      background-color: #007bff;
-      color: white;
-      width: 100%;
-      padding: 10px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-    .btn-submit:hover {
-      background-color: #0056b3;
-    }
-  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -89,5 +43,46 @@
       <button type="submit" class="btn btn-submit">Enviar</button>
     </form>
   </div>
-</body>
-</html>
+<style>  .container-fluid {
+      max-width: 600px;
+      margin: auto;
+      margin-top : 3%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #007bff;
+    font-size: 2rem; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Torna o texto em negrito */
+    line-height: 1.2; /* Melhora o espaçamento entre linhas */
+    text-transform: uppercase;
+    }
+    .styled-input {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .alert {
+      margin-bottom: 20px;
+    }
+    .btn-submit {
+      background-color: #007bff;
+      color: white;
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .btn-submit:hover {
+      background-color: #0056b3;
+    }</style>
+  </x-app-layout>

@@ -1,6 +1,6 @@
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #d8d9df;
   padding: 20px 10px;
 }
 
@@ -16,7 +16,7 @@
   border-radius: 4px;
 }
 .header a.logo {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -24,6 +24,9 @@
 .header a:hover {
   background-color: #ddd;
   color: black;
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+  transition: transform 0.2s;
 }
 
 /* Style the active/current link*/
@@ -43,8 +46,11 @@
     float: none;
     display: block;
     text-align: left;
+    justify-content: center;
   }
   .header-right {
     float: none;
+    justify-content: center;
+
   }
 }
